@@ -34,6 +34,10 @@ public class SingletonLazy {
 	/**
 	 * TODO 单例中经典的双检  （但是此方式必须设置private static volatile SingletonLazy singletonLazy =  null;）
 	 * ---- 1、此处设置singletonLazy变量为volatile，才能保证在jdk 1.5以后 双检单例能生效（具体解释见下述：关于双检对于jdk1.5后成立依据）
+	 * 
+	 * ---- DCL失效原因是：获得锁的线程正在执行构造函数的时候，
+	 *      其他的线程执行到第一次检查if (singletonLazy == null)的时候，会返回false，
+	 *      因为已经在执行构造函数了，就不是null,因此，会把没有构造完全的对象返回给线程使用。这是不安全的。
 	 *
 	 * 
 	 *---- 关于双检对于jdk1.5后成立依据：
@@ -73,18 +77,18 @@ public class SingletonLazy {
 	 * @author ttx
 	 * @since 2016年2月11日 下午3:14:59
 	 */
-	public static  SingletonLazy  getInstanceWarn2(){
-		if(singletonLazy == null){
+	public static SingletonLazy getInstanceWarn2() {
+		// DCL失效原因是:如果一个线程执行singletonLazy = new SingletonLazy();
+		// 先分配内存，还没来的及赋真实值，那么就会将未初始化的对象返回回去，因此线程不安全
+		// 因此需要将singletonLazy定义为volatile，保证对象构造原子性
+		if (singletonLazy == null) {
 			synchronized (SingletonLazy.class) {
-				if(singletonLazy == null){
-					return new SingletonLazy();
-				}else{
-					return singletonLazy;
+				if (singletonLazy == null) {
+					singletonLazy = new SingletonLazy();
 				}
 			}
-	}else{
-		return singletonLazy;
+
 		}
+		return singletonLazy;
 	}
-	
 }
