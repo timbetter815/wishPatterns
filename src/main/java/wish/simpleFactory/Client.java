@@ -2,12 +2,16 @@ package wish.simpleFactory;
 
 
 /**
-	 * TODO 此处即简单工厂模式：
+	 * TODO 简单工厂模式：将创建实例对象责任封装到工厂类中
 	 * 1、优点：将创建实例对象责任封装到工厂类中，客户端免除创建对象责任，只负责消费产品
 	 * 2、缺点：如果增加产品种类，则需要修改工厂类，判断逻辑
+	 * 
 	 * --  java类库中简单工厂模式举例：java.text.DateFormat,其中DateFormat为一个抽象abstract类，里面有静态方法static getInstance，
 	 *   --getInstance没法直接返回DateFormat自身实例对象（抽象类无法实例化），因此在getInstance里面get函数，
 	 *   --封装返回了一个DateFormat的实现类SimpleDateFormat的实例。
+	 *   
+	 * -- 使用举例：简单工厂无处不在，只要涉及到将new对象封装到一个工厂函数，即为简单工厂
+	 *
  * @author ttx
  * @since 2016年2月11日 上午11:56:45
  */
