@@ -13,6 +13,8 @@ package my.simpleFactory;
 	 *   --getInstance没法直接返回DateFormat自身实例对象（抽象类无法实例化），因此在getInstance里面get函数，
 	 *   --封装返回了一个DateFormat的实现类SimpleDateFormat的实例。
 	 *   
+	 *   -- Integer.valueOf()与Class.forName()属于简单静态工厂方法
+	 *   
 	 * -- 使用举例：简单工厂无处不在，只要涉及到将new对象封装到一个工厂函数，即为简单工厂
 	 *
  * @author ttx
