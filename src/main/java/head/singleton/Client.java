@@ -18,6 +18,11 @@ package head.singleton;
  *   
  *   -- 自己使用的单例模式：
  *     -- 封装RestTemplete的单例模式。RestTemplete，具有对rest请求的增删查改方法
+ *     
+ * ---- 序列生成器，使用单例模式设计：
+ *   -- 1、定义一个KenGenerator单例，kenGen = KenGenerator.getInstacne()
+ *   -- 2、在KenGenerator类中，定义一个private int key = 1;
+ *   -- 3、在KenGenerator类中，定义一个方法synchronize getNextKey方法，方法return key++；
  * 
  * @author ttx
  * @since 2016年2月11日 下午2:50:47
