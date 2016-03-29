@@ -4,7 +4,7 @@ public class MySingletonOne {
 	
 	private String name;
 	
-	protected MySingletonOne(){
+	private MySingletonOne(){
 		
 	}
 

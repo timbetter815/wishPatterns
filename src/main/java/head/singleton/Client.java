@@ -3,7 +3,7 @@ package head.singleton;
 /**
  * TODO 单例模式：确保一个类只有一个实例，提供一个全局访问点
  * ---- 单例模式实现：
- *   -- 1、单例模式分为两种：1、懒汉模式     2、饿汉模式（即延迟加载）
+ *   -- 1、单例模式分为两种：1、懒汉模式 （直接使用static 成员变量一开始new即可）    2、饿汉模式（即延迟加载）
  *   -- 2、单例模式保证为单例最重要的特征即：构造方法private私有化
  *   -- 3、 如果看到单例延迟加载模式， 需要考虑双检（spring的单例也使用的双检实现单例）
  *   
@@ -12,6 +12,12 @@ package head.singleton;
  *   -- 2、延迟加载模式：使用synchronized锁住getInstance方法（判断instance是否为null，为null则new ，不为null则直接返回即可）
  *   -- 3、直接方法级别同步  synchronized 加锁，效率低，考虑用双重检查加锁机制（注意单例变量加上volatile修改，且需要在jdk1.5之后才能保证正确性）
  *   -- 4、使用静态内部类实现（任然是延迟加载但是模式）：静态内部类创建并持有一个单例对象。getInstance中返回静态类只有的单例对象即可
+ *   
+ * ---- jdk使用单例：
+ *   -- java.lang.Runtime#getRuntime()
+ *   
+ *   -- 自己使用的单例模式：
+ *     -- 封装RestTemplete的单例模式。RestTemplete，具有对rest请求的增删查改方法
  * 
  * @author ttx
  * @since 2016年2月11日 下午2:50:47
