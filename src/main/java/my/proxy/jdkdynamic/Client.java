@@ -1,25 +1,12 @@
 package my.proxy.jdkdynamic;
 
-import java.lang.ref.Reference;
-import java.lang.ref.WeakReference;
-import java.lang.reflect.Modifier;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import sun.misc.ProxyGenerator;
-import sun.reflect.misc.ReflectUtil;
-
-
 /**
  * TODO jdk动态代理模式
- * 
  * ---- 1、创建接口MyInvocationHandler 实现 jdk InvocationHandler接口，将需要对原生对象增加的切入点放置到MyInvocationHandler该实现类中
- *   -- 2、在MyInvocationHandler中，实现getProxy函数，该函数用newProxyInstance生成并返回代理类（newProxyInstance需要使用MyHello作为参数）
- *   -- 3、在Client端，new一个将要被代理的原始对象MyHello，将该对象以构造传参形式，传递给MyInvocationHandler
+ *   -- 2、在MyInvocationHandler中，重写invoke()方法，将切点方法放置到method.invoke()前后即可，
+ *    --3、实现getProxy函数，该函数用newProxyInstance生成并返回代理类（newProxyInstance需要使用MyHello作为参数）
+ *   -- 4、在Client端，new一个将要被代理的原始对象MyHello，将该对象以构造传参形式，传递给MyInvocationHandler
+ *   
  *   -- 本例中在MyInvocationHandler中实现了before、after切入函数。因此proxy.sayHello（）调用时候，动态代理自动调用切点函数
  * 
  * @author ttx

@@ -13,7 +13,8 @@ package head.decorator;
  * 
  * 
  * ---- jdk中的实现：
- *   -- java.io.FileInputStream
+ *   -- java.io.FileInputStream（new BufferedReader(new InputStreamReader(System.in));）
+ *   
  * @author ttx
  * @since 2016年2月11日 上午12:24:31
  */
