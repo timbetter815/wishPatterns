@@ -27,6 +27,9 @@ package my.abstractFactory;
  *   -- 4、而createCalendar返回的接口依然是抽象产品接口Calendar。
  *   -- 5、这里的抽象工厂（Calendar类）和抽象产品（Calendar类）是同一个类，但我们依然认为calendar是一个抽象工厂的实现
  *   
+ *   -- java.sql.DriverManager#getConnection()产品族为oracle、mysql、sqlserver，没一个产品族里面有相应的setAutoCommit()、rollback()等一系列方法。
+
+ *   
  * 
  *   无论是简单工厂模式、工厂模式还是抽象工厂模式，它们本质上都是将不变的部分提取出来，将可变的部分放入到接口内实现，以达到最大程度上的复用。
  *   -- 拿一个生产水杯（cup）的工厂举例：

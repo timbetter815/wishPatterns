@@ -8,6 +8,10 @@ package my.proxy.jdkdynamic;
  *   -- 4、在Client端，new一个将要被代理的原始对象MyHello，将该对象以构造传参形式，传递给MyInvocationHandler
  *   
  *   -- 本例中在MyInvocationHandler中实现了before、after切入函数。因此proxy.sayHello（）调用时候，动态代理自动调用切点函数
+ *   
+ *   -- CGLIB代理类：他的原理是对指定的目标类生成一个子类，并覆盖其中方法实现增强，但因为采用的是继承，所以不能对final修饰的类进行代理。
+ *   
+ *   -- 还可以使用AspectJ实现切面代理
  * 
  * @author ttx
  * @since 2016年3月17日 下午2:38:55

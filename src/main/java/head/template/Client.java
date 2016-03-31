@@ -9,7 +9,7 @@ package head.template;
  *   -- 3、所有自类继承自该抽象类
  *   
  * ---- jdk实现举例：
- *   -- 1、java。utils.sort
+ *   -- 1、java.utils.sort
  *   
  * @author ttx
  * @since 2016年2月14日 下午7:21:56
