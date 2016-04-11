@@ -4,7 +4,7 @@ package my.simpleFactory;
 public class SimpleFactory {
 
 	/**
-	 * TODO 此处即简单工厂模式，在工厂类为核心，里面包含判断业务逻辑
+	 * DESC 此处即简单工厂模式，在工厂类为核心，里面包含判断业务逻辑
 	 * @param fruitType
 	 * @return
 	 * @throws Exception

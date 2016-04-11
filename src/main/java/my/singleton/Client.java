@@ -2,7 +2,7 @@ package my.singleton;
 
 
 /**
- * TODO 封装公用的单例框架（只需要传递Class类名，即可获得对应单例）
+ * DESC 封装公用的单例框架（只需要传递Class类名，即可获得对应单例）
  *   -- 1、将单例工厂构造函数设置为私有方法（单例最基本的条件）
  *   -- 2、创建 static volatile 对象，new ConcurrentHashMap<Class, Object>(),用来保存需要的单例对象
  *   -- 3、每次调用getSingleton时候，先concurrentHashMap.get(ClassType),如果有则直接返回

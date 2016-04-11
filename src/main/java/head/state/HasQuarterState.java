@@ -1,7 +1,7 @@
 package head.state;
 
 /**
- * TODO 拥有投币（25分）状态
+ * DESC 拥有投币（25分）状态
  * @author ttx
  * @since 2016年2月19日 下午9:33:44
  */

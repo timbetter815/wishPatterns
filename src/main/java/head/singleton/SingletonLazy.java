@@ -1,7 +1,7 @@
 package head.singleton;
 
 /**
- * TODO 延迟加载单例（即，当且仅当在单例对象需要的时候才生成单例）
+ * DESC 延迟加载单例（即，当且仅当在单例对象需要的时候才生成单例）
  * @author ttx
  * @since 2016年2月11日 下午2:40:45
  */
@@ -32,7 +32,7 @@ public class SingletonLazy {
 	}
 	
 	/**
-	 * TODO 单例中经典的双检  （但是此方式必须设置private static volatile SingletonLazy singletonLazy =  null;）
+	 * DESC 单例中经典的双检  （但是此方式必须设置private static volatile SingletonLazy singletonLazy =  null;）
 	 * ---- 1、此处设置singletonLazy变量为volatile，才能保证在jdk 1.5以后 双检单例能生效（具体解释见下述：关于双检对于jdk1.5后成立依据）
 	 * 
 	 * ---- DCL失效原因是：获得锁的线程正在执行构造函数的时候，

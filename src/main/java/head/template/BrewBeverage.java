@@ -3,7 +3,7 @@ package head.template;
 public abstract class BrewBeverage {
 
 	/**
-	 * TODO 此处为模板方法(即将所有子类完成特定功能的若干个步骤方法，封装成一个模板方法)
+	 * DESC 此处为模板方法(即将所有子类完成特定功能的若干个步骤方法，封装成一个模板方法)
 	 * @author ttx
 	 * @since 2016年2月14日 下午6:01:09
 	 */

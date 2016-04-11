@@ -2,7 +2,7 @@ package head.javaiterator;
 
 
 /**
- * TODO 迭代器模式：提供一种方法顺序访问集合对象中的各个元素，而有不暴露其内部的实现
+ * DESC 迭代器模式：提供一种方法顺序访问集合对象中的各个元素，而有不暴露其内部的实现
  * 
  * ---- 迭代器模式使用java.utils.Iterator 及java.lang.Iterable 实现：
  *   -- 1、实现了java.lang.Iterable的接口的类，可以使用java5的for/in新语法实现，迭代器遍历
