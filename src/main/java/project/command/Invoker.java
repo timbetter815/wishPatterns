@@ -1,4 +1,4 @@
-package my.command;
+package project.command;
 
 public class Invoker {
 

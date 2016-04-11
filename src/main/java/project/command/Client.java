@@ -1,4 +1,4 @@
-package my.command;
+package project.command;
 
 /**
  * DESC 将短信，邮件，通知的发送，接受使用命令模式

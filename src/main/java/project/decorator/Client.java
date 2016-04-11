@@ -1,4 +1,4 @@
-package my.decorator;
+package project.decorator;
 
 /**
  * DESC 装饰模式是继承关系的一个替代方案。不管装饰多少层，返回的对象还是Component对象

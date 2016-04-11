@@ -1,4 +1,4 @@
-package my.decorator;
+package project.decorator;
 
 public class SalesDecoder4Goods implements IGoods {
 
