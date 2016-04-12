@@ -1,11 +1,11 @@
 package my.abstractFactory;
 
 /**
- * TODO 抽象工厂模式：提供一个接口（抽象工厂里面提供产品族对象获取的抽象接口），用于创建相关或依赖对象的家族，而不需要明确指定具体类
- * -- 1、定义一个抽象工厂方法类，并定义一系列生产各产品族的工厂方法（createFruit，crateVeggie等），所有的具体工厂类继承自该类，并重些抽象工厂方法
+ * DESC 抽象工厂模式：提供一个接口（抽象工厂里面提供产品族对象获取的抽象接口），用于创建相关或依赖对象的家族，而不需要明确指定具体类
+ * -- 1、定义一个抽象工厂方法类，并定义一系列生产各产品族的工厂方法（createFruit，crateVeggie等），所有的具体工厂类继承自该类，并重写抽象工厂方法
  * -- 2、定义多个抽象产品（Fruit、Veggie等产品族）,所有的具体产品类继承自各自抽象产品类（热带水果，热带蔬菜，寒带水果，寒带蔬菜）。
  * -- 3、多个产品族，对应多个产品族工厂，即NorthernGardenerFactory、TropicalGardenerFactory。
- * -- 4、其中TropicalGardenerFactory重写createFruit，crateVeggie方法，对应生产热点水果，热带蔬菜。同理NorthernGardenerFactory()类同。
+ * -- 4、其中TropicalGardenerFactory重写createFruit，crateVeggie方法，对应生产热带水果，热带蔬菜。同理NorthernGardenerFactory()类同。
  * -- 4、工厂方法将对象的创建延迟到具体实现工厂中，抽象工厂方法只是给出工厂接口
  * -- 5、抽象工厂，申明了工厂的一些方法（包括Factory方法的申明），所有工厂子类继承自抽象工厂，则将具体的工厂产生对象过程，放到了子类中实现
  * -- 6、如果有N个产品族，则在抽象工厂方法中就应该定义N个创建方法。
@@ -27,7 +27,7 @@ package my.abstractFactory;
  *   -- 4、而createCalendar返回的接口依然是抽象产品接口Calendar。
  *   -- 5、这里的抽象工厂（Calendar类）和抽象产品（Calendar类）是同一个类，但我们依然认为calendar是一个抽象工厂的实现
  *   
- *   -- java.sql.DriverManager#getConnection()产品族为oracle、mysql、sqlserver，没一个产品族里面有相应的setAutoCommit()、rollback()等一系列方法。
+ *   -- java.sql.DriverManager#getConnection()产品族为oracle、mysql、sqlserver，每一个产品族里面有相应的setAutoCommit()、rollback()等一系列方法。
 
  *   
  * 

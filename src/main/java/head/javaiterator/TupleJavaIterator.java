@@ -27,7 +27,7 @@ public class TupleJavaIterator implements Iterator<String> {
 	}
 
 	public void remove() {
-		// TODO Auto-generated method stub
+		// DESC Auto-generated method stub
 		
 	}
 

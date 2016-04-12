@@ -1,7 +1,7 @@
 package head.singleton;
 
 /**
- * TODO 使用java静态内部类实现单例
+ * DESC 使用java静态内部类实现单例
  * @author ttx
  * @since 2016年2月11日 下午4:18:10
  */

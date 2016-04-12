@@ -1,7 +1,7 @@
 package my.proxy.jdkdynamic;
 
 /**
- * TODO jdk动态代理模式
+ * DESC jdk动态代理模式
  * ---- 1、创建接口MyInvocationHandler 实现 jdk InvocationHandler接口，将需要对原生对象增加的切入点放置到MyInvocationHandler该实现类中
  *   -- 2、在MyInvocationHandler中，重写invoke()方法，将切点方法放置到method.invoke()前后即可，
  *    --3、实现getProxy函数，该函数用newProxyInstance生成并返回代理类（newProxyInstance需要使用MyHello作为参数）
@@ -28,7 +28,7 @@ public class Client {
 		proxy.sayHello();
 	}
 /**  
-     * TODO 此处附上对于jdk动态代理的 核心函数newProxyInstance解析
+     * DESC 此处附上对于jdk动态代理的 核心函数newProxyInstance解析
 	 * @author ttx
 	 * @since 2016年3月17日 下午2:38:55
 	 */

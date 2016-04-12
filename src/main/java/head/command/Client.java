@@ -1,7 +1,7 @@
 package head.command;
 
 /**
- * TODO 命令模式：将"请求"封装成对象，以便使用不同的请求、队列、或者日志来参数化其他对象。命令模式也支持可撤销的操作。
+ * DESC 命令模式：将"请求"封装成对象，以便使用不同的请求、队列、或者日志来参数化其他对象。命令模式也支持可撤销的操作。
  * ---- 命令模式实现：
  *   -- 1、定义一个命令接口，命令接口有excute方法。
  *   -- 2、具体命令对象继承自命令接口，其中具体命令对象持有一个Receiver对象，在构造函数中赋值（也可以使用初始值+构造函数赋值同时使用），
@@ -31,12 +31,18 @@ package head.command;
  *   -- 1、java.util.Timer#schedule()与cancel()，其中Timer为Command接口
  *         timer = new Timer(); timer.schedule(new RemindTask(), seconds*1000);及timer.cancel(); 
  *         
- *   -- 2、短信、邮件、公告发送接口，定义一个sendCommand接口
- *         noticeCommand接口，里面有send()方法，里面拥有一个static ReceiverList = new ArrayList();及addReceiver(){}方法
- *         其中短信、邮件、公告实现sendCommand，各自定义自己的send()方法。
- *         每次前端页面请求发送短信或者邮件，输入了电话号码或者邮箱地址后，则自动创建一个new Receive();其中Receive中保存了介绍通知的人的名字及其他信息
- *         如果点击的是短信，则创建一个短信命令对象。创建短信发送命令对象同时，需要传递Receive对象。再通过send将Receive及当前发件人信息，拼装成信息内容。
- *         这样当以后有新的类型发送命令，只需要扩展一个新的具体命令，重写send方法即可。
+ * ----  将短信，邮件，通知的发送，接受使用命令模式
+ *      -- 1、定义Command接口，其中SendCommand及acceptCommand继承自该接口，分别表示发送及接收命令，
+ *            具体命令拥有一个Receiver成员变量，重写父类Command的excute方法
+ *      -- 2、定义一个receiver接口，其中MailReceiver、MessageReceiver继承自该接口
+ *      -- 3、定义一个Invoker调用中介者。拥有一个Command的成员变量。
+ *      
+ *      使用：
+ *      -- 1、创建一个具体的MailReceiver，其中MailReceiver中定义了send及accept方法的具体业务逻辑
+ *      -- 2、创建一个具体的SendCommand，其中SendCommand命令通过构造函数将发送命令与MailReceiver绑定
+ *      -- 3、创建一个Invoker请求方，invoker通过setCommand设置上述命令
+ *      -- 4、invoker执行action方法，则自动使得MailReceiver调用命令业务处理逻辑
+ *      -- 5、从而达到了，将请求方Invoker与执行方Receiver解耦了。
  *         
  *   -- 3、导航下一步：每次单击下一步生成一个命令，使用invoker.setCommand保存起来。当最后一步点击提交完成实现send(),send()方法依次将所有步骤执行。
  *        
