@@ -9,6 +9,9 @@ package head.strategy;
  *   -- 3、具体的context类继承自context类，例如RedHeadDuck、ToyDuck。其中子类将父类duck中持有的接口引用对象赋值为具体行为类（例如：FlyWithWings、FlyNoWay等）
  *   -- 4、这样在new 具体的context子类时，其行为则自动生成。
  *   
+ * ---- 项目中策略模式：
+ *   -- novaclient/neutronclient/cindercllient继承自baseclient，各自的算法get、put、post、delete相同，但是端口，版本号不相同，但是互相可以替换
+ *   
  * @author ttx
  * @since 2016年2月19日 下午11:09:24
  */
