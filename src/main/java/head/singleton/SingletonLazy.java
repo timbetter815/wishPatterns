@@ -73,11 +73,17 @@ public class SingletonLazy {
 	 *   -- 2、该变量没有包含在具有其他变量的不变式中。
 	 *
 	 *
+	 * ---- Java语言中有一个“先行发生”（happen—before）的规则，它是Java内存模型中定义的两项操作之间的偏序关系，
+	 *      如果操作A先行发生于操作B，其意思就是说，在发生操作B之前，操作A产生的影响都能被操作B观察到，
+	 *      “影响”包括修改了内存中共享变量的值、发送了消息、调用了方法等，它与时间上的先后发生基本没有太大关系。
+     *
+	 *
 	 * ---- JDK1.5 采用新的内存模型JSR-133,JSR-133定义happen before原则：
 	 *   -- 1、Each action in a thread happens before every action in that thread that comes later in the program's order.
      *         程序顺序规则：一个线程中的每个操作，happens- before 于该线程中的任意后续操作。
      *   -- 2、An unlock on a monitor happens before every subsequent lock on that same monitor.
      *         监视器锁规则：对一个监视器锁的解锁，happens- before 于随后对这个监视器锁的加锁。
+     *         即：一次只有一个线程获取监视器，因此一个获取监视器的线程解锁之前执行的操作对后进入的线程的操作全部可见
      *   -- 3、A write to a volatile field happens before every subsequent read of that same volatile.
      *         volatile变量规则：对一个volatile域的写，happens- before 于任意后续对这个volatile域的读。
      *   -- 4、A call to start() on a thread happens before any actions in the started thread.
