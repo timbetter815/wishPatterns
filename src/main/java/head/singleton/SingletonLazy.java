@@ -57,7 +57,7 @@ public class SingletonLazy {
 	 *   -- 1、可见性：对一个volatile变量的读，总是能看到（任意线程）对这个volatile变量最后的写入。
 	 *   -- 2、并不具备完全原子性：对任意单个volatile变量的读/写具有原子性，但类似于volatile++这种复合操作不具有原子性。 因此不具备完全的原子性。
 	 *   -- 3、volatile部分场景原子性：针对单个操作具备原子性，例如对于long、double如果没有volatile修饰，则多个线程操作时，有可能截取到一部分赋值（字节为单位的不完成赋值），
-	 *        但是加了volatile修改则，能保证，多个线程对于多个字节的操作时原子性的。 但是volatile并不能保证，对于一个volatile修饰变量，复合操作原子性（ex：i++）
+	 *        但是加了volatile修改则，能保证，多个线程对于多个字节的变量读写操作时原子性的。 但是volatile并不能保证，对于一个volatile修饰变量，复合操作原子性（ex：i++）
 	 *   
 	 *   
 	 * ---- volatile 不保证 i++的原子性解释：（i++ 由读取-修改-写入 三个操作完成，不具体原子性）
@@ -70,7 +70,21 @@ public class SingletonLazy {
 	 *        
 	 * ---- 由于volatile只具备可见性（不具备原子性），所以使用volatile必须满足如下场景：
 	 *   -- 1、对变量的写操作不依赖于当前值。
-	 *   -- 2、该变量没有包含在具有其他变量的不变式中。     
+	 *   -- 2、该变量没有包含在具有其他变量的不变式中。
+	 *
+	 *
+	 * ---- JDK1.5 采用新的内存模型JSR-133,JSR-133定义happen before原则：
+	 *   -- 1、Each action in a thread happens before every action in that thread that comes later in the program's order.
+     *         程序顺序规则：一个线程中的每个操作，happens- before 于该线程中的任意后续操作。
+     *   -- 2、An unlock on a monitor happens before every subsequent lock on that same monitor.
+     *         监视器锁规则：对一个监视器锁的解锁，happens- before 于随后对这个监视器锁的加锁。
+     *   -- 3、A write to a volatile field happens before every subsequent read of that same volatile.
+     *         volatile变量规则：对一个volatile域的写，happens- before 于任意后续对这个volatile域的读。
+     *   -- 4、A call to start() on a thread happens before any actions in the started thread.
+     *         Thread.start()的调用会happens-before于启动线程里面的动作。
+     *   -- 5、All actions in a thread happen before any other thread successfully returns from a join() on that thread.
+     *         Thread中的所有动作都happens-before于其他线程从Thread.join中成功返回。
+     *   -- 6、传递性：如果A happens- before B，且B happens- before C，那么A happens- before C。
 	 *        
 	 *        
 	 * @return
