@@ -3,7 +3,7 @@ package head.singleton;
 public class Singleton {
 	private static Singleton singleton =  new Singleton();
 
-	// 丹丽模式构造方法必须private私有化，才能禁止被多次new
+	// 单例模式构造方法必须private私有化，才能禁止被多次new
 	private Singleton(){
 	}
 	

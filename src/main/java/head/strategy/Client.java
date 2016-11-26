@@ -10,7 +10,10 @@ package head.strategy;
  *   -- 4、这样在new 具体的context子类时，其行为则自动生成。
  *   
  * ---- 项目中策略模式：
- *   -- novaclient/neutronclient/cindercllient继承自baseclient，各自的算法get、put、post、delete相同，但是端口，版本号不相同，但是互相可以替换
+ *   -- 其中baseclient定义get、put、post、delete接口。
+ *   -- novaclient/neutronclient/cindercllient继承自baseclient，
+ *   -- 各自的算法get、put、post、delete相同，但是端口，版本号不相同，但是互相可以替换
+ *   -- 其他NovaManage中持有baseclient的引用，这样可以new novaclient及neutronclient等来调用不同的CURD方法。
  *   
  * @author ttx
  * @since 2016年2月19日 下午11:09:24
