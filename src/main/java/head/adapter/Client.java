@@ -32,7 +32,8 @@ package head.adapter;
  *   -- java.util.Arrays#asList()将数组array适配层list
  *   -- 将jdk低版本的枚举变为迭代器（hasMoreElements适配为->hasNext）
  *   
- * ---- 将fw.jd.com服务市场的，原始单账号功能，适配为支持父子账号功能
+ * ---- 将fw.jd.com服务市场的，原始单账号功能，
+ * ---- 每次判断商品是否为父账号商品，则直接适配为判断为父或者子账号的商品
  *   
  * @author ttx
  * @since 2016年2月13日 下午6:06:17

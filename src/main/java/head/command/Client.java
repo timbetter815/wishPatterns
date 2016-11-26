@@ -10,7 +10,7 @@ package head.command;
  *   -- 4、定义一个Invoker类，此类即命令的调用者，具有setCommand方法，该方法用于将该客户端发送命令
  *   -- 5、Client端，需要new Invoker 与 Receiver 对象。
  *        然后new 一个具体的Command对象（new具体Command对象时，传递构造参数Receiver对象）。
- *        再将该Command对象，setCommand到Invoker对象。在执行command对象的excute方法
+ *        再将该Command对象，setCommand到Invoker对象。再执行Invoker对象的excute方法
  *        
  * ---- 假若想要支持undo方式：
  *   -- 1、以设置电影快进速度为例：电影快进速度有x1/x2/x3三个速度
@@ -61,7 +61,7 @@ public class Client {
 		
 		invoker.setCommand(command);
 
-		command.excute();
+		invoker.action();
 	}
 
 }
