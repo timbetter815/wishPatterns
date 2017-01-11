@@ -101,10 +101,11 @@ public class SingletonLazy {
 		// DCL失效原因是:如果一个线程执行singletonLazy = new SingletonLazy();
 		// 先分配内存，还没来的及赋真实值，那么就会将未初始化的对象返回回去，因此线程不安全
 		// 因此需要将singletonLazy定义为volatile，保证对象构造原子性
-		if (singletonLazy == null) {
+		// PS：虽然synchronized保证了原子性，但是当线程a执行到3时候，另外的线程b可以执行到未加锁的1，从而导致了双检失效
+		if (singletonLazy == null) {// 1
 			synchronized (SingletonLazy.class) {
-				if (singletonLazy == null) {
-					singletonLazy = new SingletonLazy();
+				if (singletonLazy == null) {// 2
+					singletonLazy = new SingletonLazy();// 3
 				}
 			}
 
