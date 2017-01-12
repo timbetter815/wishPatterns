@@ -40,7 +40,7 @@ public class SingletonLazy {
 	 *      因为已经在执行构造函数了，就不是null,因此，会把没有构造完全的对象返回给线程使用。这是不安全的。
 	 *
 	 * 
-	 *---- 关于双检对于jdk1.5后成立依据：
+	 *---- 关于双检对于jdk1.5后成立依据：http://www.cnblogs.com/longshiyVip/p/5173877.html
 	 *   -- 0、JSR-133之前的旧Java内存模型中，虽然不允许volatile变量之间重排序，但旧的Java内存模型允许volatile变量与普通变量之间重排序。
 	 *   -- 1、JSR-133专家组决定增强volatile的内存语义：严格限制编译器和处理器对volatile变量与普通变量的重排序，确保volatile的写-读和监视器的释放-获取一样，具有相同的内存语义。因此在jdk1.5之前双检不成立
 	 *   -- 2、jdk1.5后volatile可以禁止jmm指令优化进行指令重排序，而new一个对象过程中，把变量指向已经完全创建好的对象是最后一步，既在指令没有重排序的情况下如果instance != null，这个对象就是已经完全创建好了。
@@ -102,6 +102,10 @@ public class SingletonLazy {
 		// 先分配内存，还没来的及赋真实值，那么就会将未初始化的对象返回回去，因此线程不安全
 		// 因此需要将singletonLazy定义为volatile，保证对象构造原子性
 		// PS：虽然synchronized保证了原子性，但是当线程a执行到3时候，另外的线程b可以执行到未加锁的1，从而导致了双检失效
+        // 深入理解Java虚拟机：
+        // 1、通过volatile修饰之后，汇编指令增加了一个lock指令（相当于一个内存屏障）
+        // 2、该指令使CPU的cache必须强制刷新到内存，让前面对volatile变量的修改对其他CPU立即可见
+        // 3、禁止指令重排序，即指令重排序无法越过内存屏障
 		if (singletonLazy == null) {// 1
 			synchronized (SingletonLazy.class) {
 				if (singletonLazy == null) {// 2
